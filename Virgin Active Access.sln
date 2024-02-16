@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutionItems", "solutionItems", "{7252C806-1919-4ECC-A398-CA66FE188ECE}"
+	ProjectSection(SolutionItems) = preProject
+		solutionItems\architectural_decision_records.md = solutionItems\architectural_decision_records.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{60F8A1FF-45AB-4309-9FC0-22665D533043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "virginactive.club.access", "src\virginactive.club.access\virginactive.club.access.csproj", "{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "databricks", "databricks", "{2851C9EB-4C72-4F25-9FFA-D2C0EE1D6F5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "noteBooks", "noteBooks", "{B389D8C7-A989-4289-8F2D-0BC6FA61FBD5}"
+	ProjectSection(SolutionItems) = preProject
+		databricks\notebooks\aggregate_insights-notebook.py = databricks\notebooks\aggregate_insights-notebook.py
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{DBF730CA-DF42-4C37-943A-72601366A604}"
+	ProjectSection(SolutionItems) = preProject
+		databricks\sql\SQLDBTableSetup.sql = databricks\sql\SQLDBTableSetup.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EFE20466-00DF-44C0-8EA0-53FEFE3A6E04} = {60F8A1FF-45AB-4309-9FC0-22665D533043}
+		{B389D8C7-A989-4289-8F2D-0BC6FA61FBD5} = {2851C9EB-4C72-4F25-9FFA-D2C0EE1D6F5A}
+		{DBF730CA-DF42-4C37-943A-72601366A604} = {2851C9EB-4C72-4F25-9FFA-D2C0EE1D6F5A}
+	EndGlobalSection
+EndGlobal
