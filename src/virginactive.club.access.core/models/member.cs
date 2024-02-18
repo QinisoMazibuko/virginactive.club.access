@@ -1,4 +1,4 @@
-namespace virginactive.club.access;
+namespace virginactive.club.access.core;
 
 public class Member
 {

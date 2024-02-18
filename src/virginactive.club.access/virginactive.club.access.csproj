@@ -56,4 +56,9 @@
 	  <Folder Include="views/" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\virginactive.club.access.services\virginactive.club.access.services.csproj" />
+	  <ProjectReference Include="..\virginactive.club.access.core\virginactive.club.access.core.csproj" />
+	</ItemGroup>
+
 </Project>
