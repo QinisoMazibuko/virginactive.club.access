@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="virginactive.club.access.MainPage"
+             x:DataType="virginactive.club.access.MainPageViewModel"
              BackgroundColor="White">
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill"
@@ -14,17 +17,18 @@
                    VerticalOptions="Fill"
                    Margin="10,0"
                    Aspect="AspectFit" />
-            <Button x:Name="checkout"
+            <Button x:Name="checkinButton"
                     Text="Check In"
+                    Command="{Binding CheckInCommand}"
                     HorizontalOptions="End"
                     BackgroundColor="red"
                     TextColor="white"
                     Padding="100"
                     FontSize="20" />
-            <Button x:Name="CounterBtn"
+            <Button x:Name="checkoutButton"
                     Text="Check Out "
                     SemanticProperties.Hint="Counts the number of times you click"
-                    Clicked="OnCounterClicked"
+                    Command="{Binding CheckOutCommand}"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
                     BackgroundColor="Red"
@@ -44,10 +48,13 @@
                    HorizontalOptions="FillAndExpand"
                    VerticalOptions="Start"
                    Aspect="AspectFill" />
-            <Image Source="virginactivelogo.jpeg"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   Margin="10,0" />
+            <zxing:CameraBarcodeReaderView x:Name="barcodeReaderView"
+                                           IsVisible="True"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           HeightRequest="300"
+                                           WidthRequest="300"
+                                           BarcodesDetectedCommand="{Binding BarcodesDetectedCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

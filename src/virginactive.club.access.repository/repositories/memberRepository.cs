@@ -22,8 +22,8 @@ public class memberRepository : IMemberRepository
         return member;
     }
 
-    public async Task<Member> GetMemberAsync(int memberId)
+    public async Task<Member> GetMemberAsync(string memberCode)
     {
-        return await _context.Members.FirstOrDefaultAsync(m => m.MemberId == memberId);
+        return await _context.Members.FirstOrDefaultAsync(m => m.QRCode == memberCode);
     }
 }

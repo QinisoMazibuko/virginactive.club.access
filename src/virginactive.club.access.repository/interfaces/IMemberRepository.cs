@@ -5,5 +5,5 @@ using virginactive.club.access.core;
 public interface IMemberRepository
 {
     Task<Member> AddMemberAsync(Member member);
-    Task<Member> GetMemberAsync(int memberId);
+    Task<Member> GetMemberAsync(string memberCode);
 }
