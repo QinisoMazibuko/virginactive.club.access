@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "noteBooks", "noteBooks", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{DBF730CA-DF42-4C37-943A-72601366A604}"
 	ProjectSection(SolutionItems) = preProject
-		databricks\sql\SQLDBTableSetup.sql = databricks\sql\SQLDBTableSetup.sql
+		databricks\sql\SQLDBTablesSetup.sql = databricks\sql\SQLDBTablesSetup.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "virginactive.club.access.core", "src\virginactive.club.access.core\virginactive.club.access.core.csproj", "{4E9F64D9-A96B-498C-81AF-AAA27E534898}"
