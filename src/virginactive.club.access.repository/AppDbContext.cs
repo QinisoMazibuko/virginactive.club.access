@@ -25,70 +25,70 @@ public class AppDbContext : DbContext
                 new Member
                 {
                     Name = "Qiniso",
-                    Surnname = "Mazibuko",
+                    Surname = "Mazibuko",
                     QRCode = "X000TFH1TF",
                     Email = "Qiniso.mazibuko@example.com"
                 },
                 new Member
                 {
                     Name = "Jane",
-                    Surnname = "Doe",
+                    Surname = "Doe",
                     QRCode = "QR002",
                     Email = "jane.doe@example.com"
                 },
                 new Member
                 {
                     Name = "Jim",
-                    Surnname = "Beam",
+                    Surname = "Beam",
                     QRCode = "QR003",
                     Email = "jim.beam@example.com"
                 },
                 new Member
                 {
                     Name = "Jack",
-                    Surnname = "Daniels",
+                    Surname = "Daniels",
                     QRCode = "QR004",
                     Email = "jack.daniels@example.com"
                 },
                 new Member
                 {
                     Name = "Johnny",
-                    Surnname = "Walker",
+                    Surname = "Walker",
                     QRCode = "QR005",
                     Email = "johnny.walker@example.com"
                 },
                 new Member
                 {
                     Name = "Jameson",
-                    Surnname = "Irish",
+                    Surname = "Irish",
                     QRCode = "QR006",
                     Email = "jameson.irish@example.com"
                 },
                 new Member
                 {
                     Name = "Josie",
-                    Surnname = "Wales",
+                    Surname = "Wales",
                     QRCode = "QR007",
                     Email = "josie.wales@example.com"
                 },
                 new Member
                 {
                     Name = "Jasper",
-                    Surnname = "Newton",
+                    Surname = "Newton",
                     QRCode = "QR008",
                     Email = "jasper.newton@example.com"
                 },
                 new Member
                 {
                     Name = "Julie",
-                    Surnname = "Bean",
+                    Surname = "Bean",
                     QRCode = "QR009",
                     Email = "julie.bean@example.com"
                 },
                 new Member
                 {
                     Name = "Jolene",
-                    Surnname = "Dolly",
+                    Surname = "Dolly",
                     QRCode = "QR010",
                     Email = "jolene.dolly@example.com"
                 }

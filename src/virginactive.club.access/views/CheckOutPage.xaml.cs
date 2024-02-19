@@ -1,13 +1,13 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using virginactive.club.access.core;
 using virginactive.club.access.services;
 using ZXing.Net.Maui;
 
 namespace virginactive.club.access;
 
-public partial class MainPage : ContentPage
+public partial class CheckOutPage : ContentPage
 {
-    public MainPage()
+    public CheckOutPage()
     {
         InitializeComponent();
     }
@@ -20,7 +20,6 @@ public partial class MainPage : ContentPage
         }
         catch (Exception ex)
         {
-            // ToDO: replace with logging
             System.Diagnostics.Debug.WriteLine($"Navigation error: {ex.Message}");
         }
     }
@@ -38,7 +37,7 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
+    private void CheckoutBarcodesDetected(object sender, BarcodeDetectionEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(async () =>
         {
@@ -50,11 +49,11 @@ public partial class MainPage : ContentPage
             }
 
             barcodeReaderView.IsDetecting = false;
-
             var barcodeValue = e.Results.FirstOrDefault()?.Value;
+
             if (!string.IsNullOrEmpty(barcodeValue))
             {
-                Debug.WriteLine("No QR Code detected or QR Code is empty."); // ToDO: replace with logging
+                Debug.WriteLine("No QR Code detected or QR Code is empty.");
             }
 
             try
@@ -63,30 +62,19 @@ public partial class MainPage : ContentPage
                 var accessLogService = serviceExtensions.GetService<IAccessLogService>();
 
                 var member = await memberService.GetMemberAsync(barcodeValue);
-                await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckIn);
+                await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckOut);
 
                 await notificationHelper.ShowTemporaryPopup(
-                    $"Welcome {member.Name} {member.Surname}"
+                    $"you Crushed it {member.Name} {member.Surname}"
                 );
-
-                var logs = await accessLogService.GetAllAccessLogsAsync();
-                Debug.WriteLine("========================================================");
-
-                foreach (var log in logs)
-                {
-                    Debug.WriteLine("member: " + log.MemberId);
-                    Debug.WriteLine("Time: " + log.AccessTime);
-                    Debug.WriteLine("access Type: " + log.AccessType);
-                }
-
-                Debug.WriteLine("========================================================");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"error while checking in member : {ex}.");
+                Debug.WriteLine($"error while checking out member : {ex}.");
             }
 
             barcodeReaderView.IsDetecting = true;
         });
     }
 }
+

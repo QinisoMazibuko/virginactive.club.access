@@ -1,9 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="virginactive.club.access.MainPage"
+             x:Class="virginactive.club.access.CheckOutPage"
+             Title="CheckOutPage"
              BackgroundColor="White">
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill"
@@ -26,6 +27,7 @@
                     FontSize="20" />
             <Button x:Name="checkoutButton"
                     Text="Check Out "
+                    SemanticProperties.Hint="Counts the number of times you click"
                     Clicked="CheckOutClicked"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
@@ -45,18 +47,18 @@
                HorizontalOptions="FillAndExpand"
                VerticalOptions="Start"
                Aspect="AspectFill" />
-        <Label x:Name="checkInLabel"
-               Text="Scan to Check In"
+        <Label x:Name="checkOutLabel"
+               Text="Scan to Check Out"
                HorizontalOptions="Center"
                FontAttributes="Bold"
                Margin="0,20,0,0" />
-        <zxing:CameraBarcodeReaderView x:Name="checkinbarcodeReaderView"
+        <zxing:CameraBarcodeReaderView x:Name="checkoutbarcodeReaderView"
                                        HorizontalOptions="FillAndExpand"
                                        VerticalOptions="FillAndExpand"
                                        HeightRequest="500"
                                        WidthRequest="700"
-                                       x:Id="checkin"
-                                       BarcodesDetected="BarcodesDetected"
+                                       x:Id="checkout"
+                                       BarcodesDetected="CheckoutBarcodesDetected"
                                        IsDetecting="True" />
     </VerticalStackLayout>
 </ContentPage>

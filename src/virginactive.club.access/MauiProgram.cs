@@ -22,14 +22,18 @@ public static class MauiProgram
             })
             .UseMauiCommunityToolkit();
         // add Dependency injection and register services
-        string databasePath = Path.Combine(FileSystem.AppDataDirectory, "clubaccess.db");
+        string databasePath = Path.Combine(FileSystem.AppDataDirectory, "clubaccess1.db");
         builder
             .Services
             .AddDbContext<AppDbContext>(
                 options => options.UseSqlite($"Data Source={databasePath}")
             );
         builder.Services.AddScoped<IAccessLogRepository, AccessLogRepository>();
+        builder.Services.AddScoped<IMemberRepository, memberRepository>();
         builder.Services.AddScoped<IAccessLogService, accessLogService>();
+        builder.Services.AddScoped<IMemberService, memberService>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

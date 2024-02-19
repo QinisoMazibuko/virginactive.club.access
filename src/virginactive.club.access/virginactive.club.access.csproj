@@ -45,11 +45,9 @@
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="3.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
         <PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
         <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="views/" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\virginactive.club.access.services\virginactive.club.access.services.csproj" />

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="virginactive.club.access.CheckInPage"
+             Title="CheckInPage"
+             BackgroundColor="White">
+    <VerticalStackLayout VerticalOptions="FillAndExpand"
+                         Spacing="10">
+        <Image Source="banner4.jpeg"
+               HeightRequest="600"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Start"
+               Aspect="AspectFill" />
+        <Label x:Name="checkInLabel"
+               Text="Scan to Check In"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               Margin="0,20,0,0" />
+        <zxing:CameraBarcodeReaderView x:Name="checkinbarcodeReaderView"
+                                       IsVisible="True"
+                                       HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       HeightRequest="500"
+                                       WidthRequest="700"
+                                       BarcodesDetected="BarcodesDetected" />
+    </VerticalStackLayout>
+</ContentPage>
