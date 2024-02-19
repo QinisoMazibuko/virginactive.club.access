@@ -66,7 +66,7 @@ public partial class MainPage : ContentPage
                 await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckIn);
 
                 await notificationHelper.ShowTemporaryPopup(
-                    $"Welcome {member.Name} {member.Surname}"
+                    $"Welcome {member.Name} {member.Surname} :) "
                 );
 
                 var logs = await accessLogService.GetAllAccessLogsAsync();

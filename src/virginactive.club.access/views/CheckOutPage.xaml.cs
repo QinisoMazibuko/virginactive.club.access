@@ -65,7 +65,7 @@ public partial class CheckOutPage : ContentPage
                 await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckOut);
 
                 await notificationHelper.ShowTemporaryPopup(
-                    $"you Crushed it {member.Name} {member.Surname}"
+                    $"you Crushed it {member.Name} {member.Surname} !!"
                 );
             }
             catch (Exception ex)
@@ -77,4 +77,3 @@ public partial class CheckOutPage : ContentPage
         });
     }
 }
-
