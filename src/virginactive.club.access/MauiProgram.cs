@@ -31,8 +31,7 @@ public static class MauiProgram
             );
 
         // register Cloud sync Db context
-        string dbconnectionstring =
-            "Server=tcp:virginactive-clubaccess-server.database.windows.net,1433;Initial Catalog=VirginActiveClubAccess;Persist Security Info=False;User ID=VirginActiveAdmin;Password=Password@12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string dbconnectionstring = "dbconection-String";
         builder
             .Services
             .AddDbContext<CloudDbContext>(Options => Options.UseSqlServer(dbconnectionstring));
