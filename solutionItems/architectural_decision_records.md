@@ -2,9 +2,8 @@
 
 # Basic flow of data
 
-<p align="center">
-   <img src="src/virginactive.club.access/Resources/Images/logsdataflow.png" width="400" title="check Int">
-
+ <p align="center">
+   <img src="src/virginactive.club.access/Resources/Images/logsdataflow.png" width="350" title="data flow">
  </p>
 
 ## ADR 1: Assumptions Made
