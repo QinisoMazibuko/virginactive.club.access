@@ -9,6 +9,7 @@ The Virgin Active Club Access System is a comprehensive POC designed to streamli
 
    <img src="src/virginactive.club.access/Resources/Images/CheckOut.png" width="350" title="check out">
  </p>
+
 ## Features
 
 - **QR Code Scanning:** Members can scan their unique QR codes at designated entry and exit points using a webcam, facilitating hassle-free access control.
