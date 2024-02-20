@@ -1,11 +1,12 @@
-﻿namespace virginactive.club.access.repository;
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using virginactive.club.access.core;
 
-public class AppDbContext : DbContext
+namespace virginactive.club.access.repository;
+
+public class CloudDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options)
+    public CloudDbContext(DbContextOptions<CloudDbContext> options)
         : base(options) { }
 
     public DbSet<Member> Members { get; set; }
@@ -14,6 +15,19 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Member>(entity =>
+        {
+            entity.HasKey(e => e.MemberId);
+            entity.Property(e => e.MemberId).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<AccessLog>(entity =>
+        {
+            entity.HasKey(e => e.AccessLogId);
+           
+            entity.Property(e => e.AccessLogId).ValueGeneratedNever();
+        });
     }
 
     public async Task SeedDatabaseAsync()

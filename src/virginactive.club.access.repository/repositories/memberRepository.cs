@@ -9,7 +9,7 @@ public class memberRepository : IMemberRepository
 
     public memberRepository(AppDbContext context)
     {
-        _context = context;
+        _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
     public async Task<Member> AddMemberAsync(Member member)

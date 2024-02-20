@@ -7,9 +7,12 @@ namespace virginactive.club.access;
 
 public partial class MainPage : ContentPage
 {
+	private readonly IMemberService _memberService;
+
     public MainPage()
     {
         InitializeComponent();
+		_memberService 
     }
 
     private async void CheckInClicked(object sender, EventArgs e)
@@ -68,18 +71,6 @@ public partial class MainPage : ContentPage
                 await notificationHelper.ShowTemporaryPopup(
                     $"Welcome {member.Name} {member.Surname} :) "
                 );
-
-                var logs = await accessLogService.GetAllAccessLogsAsync();
-                Debug.WriteLine("========================================================");
-
-                foreach (var log in logs)
-                {
-                    Debug.WriteLine("member: " + log.MemberId);
-                    Debug.WriteLine("Time: " + log.AccessTime);
-                    Debug.WriteLine("access Type: " + log.AccessType);
-                }
-
-                Debug.WriteLine("========================================================");
             }
             catch (Exception ex)
             {

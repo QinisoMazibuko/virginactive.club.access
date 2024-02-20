@@ -11,7 +11,7 @@ namespace virginactive.club.access.repository
 
         public AccessLogRepository(AppDbContext context)
         {
-            _context = context;
+            _context = context?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<Member> AddAccessLogAsync(AccessLog log)
@@ -39,7 +39,24 @@ namespace virginactive.club.access.repository
         public async Task<IEnumerable<AccessLog>> GetAccessLogsAsync()
         {
             return await _context.AccessLogs.ToListAsync();
-            // This returns all access logs. will be adding filtering and pagination for performance.
+        }
+
+        public async Task<List<AccessLog>> GetUnsyncedAccessLogsAsync()
+        {
+            return await _context.AccessLogs.Where(x => !x.IsInSync).ToListAsync();
+        }
+
+        public async Task MarkLogAsSyncedAsync(int AccessLogId)
+        {
+            var currentLog = await _context.AccessLogs.FindAsync(AccessLogId);
+
+            if (currentLog == null)
+            {
+                throw new NullReferenceException($"log id {AccessLogId} could not be found");
+            }
+
+            currentLog.IsInSync = true;
+            await _context.SaveChangesAsync();
         }
     }
 }

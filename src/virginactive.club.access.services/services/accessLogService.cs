@@ -1,6 +1,7 @@
 ﻿namespace virginactive.club.access.services;
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using virginactive.club.access.core;
 using virginactive.club.access.repository;
 
@@ -10,7 +11,7 @@ public class accessLogService : IAccessLogService
 
     public accessLogService(IAccessLogRepository repository)
     {
-        _repository = repository;
+        _repository = repository ?? throw new ArgumentNullException(nameof(repository));
     }
 
     public async Task<IEnumerable<AccessLog>> GetAllAccessLogsAsync()
@@ -18,16 +19,41 @@ public class accessLogService : IAccessLogService
         return await _repository.GetAccessLogsAsync();
     }
 
+    public Task<List<AccessLog>> GetUnsyncedAccessLogsAsync()
+    {
+        return _repository.GetUnsyncedAccessLogsAsync();
+    }
+
+    public async Task MarkLogAsSynced(int accessLogId)
+    {
+        try
+        {
+            await _repository.MarkLogAsSyncedAsync(accessLogId);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"error while syncing log with id {accessLogId} : {ex}.");
+        }
+    }
+
     public async Task RecordAccessAsync(int memberId, accessType accessType)
     {
-        var log = new AccessLog
+        try
         {
-            MemberId = memberId,
-            AccessTime = DateTime.UtcNow, // Assuming UTC for simplicity
-            AccessType = accessType.ToString(),
-            ClubLocation = "Claremont" // fixed  for simplicity
-        };
+            var log = new AccessLog
+            {
+                MemberId = memberId,
+                AccessTime = DateTime.UtcNow, // Assuming UTC for simplicity
+                AccessType = accessType.ToString(),
+                ClubLocation = "Claremont", // fixed  for simplicity
+                IsInSync = false,
+            };
 
-        await _repository.AddAccessLogAsync(log);
+            await _repository.AddAccessLogAsync(log);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"error while adding access log for member {memberId} : {ex}.");
+        }
     }
 }

@@ -1,11 +1,29 @@
-﻿namespace virginactive.club.access;
+﻿using virginactive.club.access.services;
+
+namespace virginactive.club.access;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    private readonly IDataSyncService _dataSyncService;
+    private Timer _syncTimer;
 
-		MainPage = new AppShell();
-	}
+    public App(IDataSyncService dataSyncService)
+    {
+        InitializeComponent();
+        _dataSyncService =
+            dataSyncService ?? throw new ArgumentNullException(nameof(dataSyncService));
+
+        MainPage = new AppShell();
+        StartSyncService();
+    }
+
+    private void StartSyncService()
+    {
+        _syncTimer = new Timer(
+            async _ => await _dataSyncService.SyncDataAsync(),
+            null,
+            TimeSpan.Zero,
+            TimeSpan.FromMinutes(1)
+        );
+    }
 }

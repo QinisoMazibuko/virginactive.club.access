@@ -7,4 +7,7 @@ public interface IAccessLogService
     Task RecordAccessAsync(int memberId, accessType accessType);
 
     Task<IEnumerable<AccessLog>> GetAllAccessLogsAsync();
+
+    Task<List<AccessLog>> GetUnsyncedAccessLogsAsync();
+    Task MarkLogAsSynced(int accessLogId);
 }

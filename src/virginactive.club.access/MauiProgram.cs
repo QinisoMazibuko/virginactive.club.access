@@ -21,18 +21,24 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             })
             .UseMauiCommunityToolkit();
-        // add Dependency injection and register services
-        string databasePath = Path.Combine(FileSystem.AppDataDirectory, "clubaccess1.db");
+
+        // register local Db context
+        string databasePath = Path.Combine(FileSystem.AppDataDirectory, "clubaccess2.db");
         builder
             .Services
             .AddDbContext<AppDbContext>(
                 options => options.UseSqlite($"Data Source={databasePath}")
             );
-        builder.Services.AddScoped<IAccessLogRepository, AccessLogRepository>();
-        builder.Services.AddScoped<IMemberRepository, memberRepository>();
-        builder.Services.AddScoped<IAccessLogService, accessLogService>();
-        builder.Services.AddScoped<IMemberService, memberService>();
-        builder.Services.AddSingleton<MainPageViewModel>();
+
+        // register Cloud sync Db context
+        string dbconnectionstring =
+            "Server=tcp:virginactive-clubaccess-server.database.windows.net,1433;Initial Catalog=VirginActiveClubAccess;Persist Security Info=False;User ID=VirginActiveAdmin;Password=Password@12;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        builder
+            .Services
+            .AddDbContext<CloudDbContext>(Options => Options.UseSqlServer(dbconnectionstring));
+
+        // register app services for DI
+        builder.Services.RegisterApplicationServices();
 
 #if DEBUG
         builder.Logging.AddDebug();
@@ -41,6 +47,18 @@ public static class MauiProgram
         // Trigger database seeding
         SeedDatabase(app.Services);
         return app;
+    }
+
+    public static void RegisterApplicationServices(this IServiceCollection Services)
+    {
+        Services.AddScoped<IAccessLogRepository, AccessLogRepository>();
+        Services.AddScoped<IMemberRepository, memberRepository>();
+        Services.AddScoped<ICloudAccessLogRepository, CloudAccessLogRepository>();
+
+        Services.AddScoped<IAccessLogService, accessLogService>();
+        Services.AddScoped<IMemberService, memberService>();
+        Services.AddScoped<IDataSyncService, DataSyncService>();
+        Services.AddSingleton<MainPageViewModel>();
     }
 
     private static void SeedDatabase(IServiceProvider services)
@@ -57,6 +75,23 @@ public static class MauiProgram
             {
                 //  logging the exception or handling it as per application's error handling policy
                 Console.WriteLine($"An error occurred while seeding the database: {ex.Message}");
+            }
+        }
+
+        using (var scope = services.CreateScope())
+        {
+            var cloudContext = scope.ServiceProvider.GetRequiredService<CloudDbContext>();
+            try
+            {
+                cloudContext.Database.EnsureCreated();
+                cloudContext.SeedDatabaseAsync().GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                //  logging the exception or handling it as per application's error handling policy
+                Console.WriteLine(
+                    $"An error occurred while seeding the Cloud database: {ex.Message}"
+                );
             }
         }
     }

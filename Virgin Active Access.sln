@@ -16,7 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "databricks", "databricks", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "noteBooks", "noteBooks", "{B389D8C7-A989-4289-8F2D-0BC6FA61FBD5}"
 	ProjectSection(SolutionItems) = preProject
-		databricks\notebooks\aggregate_insights-notebook.py = databricks\notebooks\aggregate_insights-notebook.py
+		..\..\Downloads\Peak Attendence analysis.ipynb = ..\..\Downloads\Peak Attendence analysis.ipynb
+		..\..\Downloads\Peak Attendence analysis.py = ..\..\Downloads\Peak Attendence analysis.py
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{DBF730CA-DF42-4C37-943A-72601366A604}"
