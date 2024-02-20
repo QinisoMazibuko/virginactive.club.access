@@ -3,7 +3,7 @@
 # Basic flow of data
 
  <p align="center">
-   <img src="src/virginactive.club.access/Resources/Images/logsdataflow.png" width="350" title="data flow">
+   <img src="src/virginactive.club.access/Resources/Images/dataflow.png" width="350" title="data flow">
  </p>
 
 ## ADR 1: Assumptions Made
