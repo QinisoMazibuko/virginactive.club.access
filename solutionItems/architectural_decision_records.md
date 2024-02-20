@@ -1,5 +1,12 @@
 # Architectural Decision Records (ADRs) for Virgin Active Club Access POC
 
+# Basic flow of data
+
+<p align="center">
+   <img src="src/virginactive.club.access/Resources/Images/logsdataflow.png" width="400" title="check Int">
+
+ </p>
+
 ## ADR 1: Assumptions Made
 
 ### Context
