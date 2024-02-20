@@ -9,6 +9,9 @@ The Virgin Active Club Access System is a comprehensive POC designed to streamli
 
    <img src="src/virginactive.club.access/Resources/Images/CheckOut.png" width="350" title="check out">
  </p>
+  <p align="center">
+   <img src="src/virginactive.club.access/Resources/Images/dataflow.png" width="350" title="data flow">
+ </p>
 
 ## Features
 
