@@ -7,12 +7,16 @@ namespace virginactive.club.access;
 
 public partial class MainPage : ContentPage
 {
-	private readonly IMemberService _memberService;
+    private readonly IMemberService _memberService;
+    private readonly IAccessLogService _accessLogService;
 
     public MainPage()
     {
         InitializeComponent();
-		_memberService 
+
+        _memberService = serviceExtensions.GetService<IMemberService>();
+
+        _accessLogService = serviceExtensions.GetService<IAccessLogService>();
     }
 
     private async void CheckInClicked(object sender, EventArgs e)
@@ -62,11 +66,8 @@ public partial class MainPage : ContentPage
 
             try
             {
-                var memberService = serviceExtensions.GetService<IMemberService>();
-                var accessLogService = serviceExtensions.GetService<IAccessLogService>();
-
-                var member = await memberService.GetMemberAsync(barcodeValue);
-                await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckIn);
+                var member = await _memberService.GetMemberAsync(barcodeValue);
+                await _accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckIn);
 
                 await notificationHelper.ShowTemporaryPopup(
                     $"Welcome {member.Name} {member.Surname} :) "

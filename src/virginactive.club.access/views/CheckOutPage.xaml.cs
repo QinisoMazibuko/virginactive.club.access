@@ -7,9 +7,16 @@ namespace virginactive.club.access;
 
 public partial class CheckOutPage : ContentPage
 {
+    private readonly IMemberService _memberService;
+    private readonly IAccessLogService _accessLogService;
+
     public CheckOutPage()
     {
         InitializeComponent();
+
+        _memberService = serviceExtensions.GetService<IMemberService>();
+
+        _accessLogService = serviceExtensions.GetService<IAccessLogService>();
     }
 
     private async void CheckInClicked(object sender, EventArgs e)
@@ -58,11 +65,8 @@ public partial class CheckOutPage : ContentPage
 
             try
             {
-                var memberService = serviceExtensions.GetService<IMemberService>();
-                var accessLogService = serviceExtensions.GetService<IAccessLogService>();
-
-                var member = await memberService.GetMemberAsync(barcodeValue);
-                await accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckOut);
+                var member = await _memberService.GetMemberAsync(barcodeValue);
+                await _accessLogService.RecordAccessAsync(member.MemberId, accessType.CheckOut);
 
                 await notificationHelper.ShowTemporaryPopup(
                     $"you Crushed it {member.Name} {member.Surname} !!"
