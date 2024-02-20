@@ -4,9 +4,11 @@
 
 The Virgin Active Club Access System is a comprehensive POC designed to streamline the process of managing club access for members. Leveraging QR code technology, the system enables members to easily enter and exit club premises. The application ensures accurate tracking of member movements by synchronizing entry and exit logs between local installations and a centralized cloud server.
 
-  <img src="src/virginactive.club.access/Resources/Images/CheckIn.png" width="350" title="check Int">
+<p align="center">
+   <img src="src/virginactive.club.access/Resources/Images/CheckIn.png" width="350" title="check Int">
 
- <img src="src/virginactive.club.access/Resources/Images/CheckOut.png" width="350" title="check out">
+   <img src="src/virginactive.club.access/Resources/Images/CheckOut.png" width="350" title="check out">
+ </p>
 ## Features
 
 - **QR Code Scanning:** Members can scan their unique QR codes at designated entry and exit points using a webcam, facilitating hassle-free access control.
