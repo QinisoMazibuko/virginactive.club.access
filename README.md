@@ -65,7 +65,7 @@ The application adopts a layered architecture to separate concerns, enhance main
    ```
 
 4. **Configure Azure Services:**
-   -Follow the instructions in the [ Azure documentation ](https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal) to set up Azure SQL Database and Azure Functions for cloud synchronization.
+   -Follow the instructions in the [ Azure documentation ](https://learn.microsoft.com/en-us/azure/azure-sql/database/single-database-create-quickstart?view=azuresql&tabs=azure-portal) to set up Azure SQL Database for cloud synchronization.
 
 ### Running the Application
 
