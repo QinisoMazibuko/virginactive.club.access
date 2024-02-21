@@ -18,13 +18,19 @@ The key assumptions made include:
 
 1. Users will have access to a device capable of scanning QR codes at entry and exit points.
 2. There will be reliable internet connectivity at club locations for cloud synchronization atleast once during the lifecycle of the app.
-3. The local database needs to be lightweight and operate independently of network connectivity. Club members are comfortable using QR codes as their primary method for access control.
+3. The local database needs to be lightweight and operate independently of network connectivity.
 4. The application needs to be cross-platform to cater to different devices and operating systems.
 5. Club members are comfortable using QR codes as their primary method for access control.
 
 ### Consequences
 
-These assumptions led to specific design decisions, such as the adoption of .NET MAUI for cross-platform development, the use of SQLite for local data storage, and the implementation of Azure services for cloud-based synchronization. Should any of these assumptions prove incorrect, it may necessitate reevaluation of the chosen technologies or design approaches.
+These assumptions led to specific design decisions:
+
+1. Adoption of .NET MAUI for cross-platform development
+2. The use of SQLite for local data storage
+3. the implementation of a background worker services for cloud-based synchronization.
+
+Should any of these assumptions prove incorrect, it may necessitate reevaluation of the chosen technologies or design approaches.
 
 ## ADR 2: Choice of .NET MAUI for Cross-Platform Development
 
@@ -38,7 +44,7 @@ The Virgin Active Club Access POC is intended to be deployed across various plat
 
 ### Consequences
 
-Choosing .NET MAUI ensures a unified development experience and reduces the time and resources required for developing and testing on multiple platforms. However, this decision also means the project is dependent on the limitations and release cycles of .NET MAUI and its compatibility with future platform updates.
+Choosing .NET MAUI ensures a unified development experience and reduces the time and resources required for developing and testing on multiple platforms. However, this decision also means the project is dependent on the limitations and release cycles of .NET MAUI and its compatibility with future platform updates. There is also a limitation on the speed of delivery due to lack of experience working/building projects with .Net MAUI.
 
 ## ADR 3: Utilizing SQLite for Local Data Storage
 
