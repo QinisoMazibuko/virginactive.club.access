@@ -69,6 +69,6 @@ The application adopts a layered architecture to separate concerns, enhance main
 
 ### Running the Application
 
-    ```bash
+  ```bash
       dotnet run
-    ```
+   ```
